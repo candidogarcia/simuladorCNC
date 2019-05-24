@@ -1,0 +1,2823 @@
+<html>
+
+<head>
+
+	<style>
+	<!--
+	.myButton {
+	outline:none;
+	}
+	-->
+	</style>
+
+	<title>primera p&aacute;gina</title>
+
+
+	
+	<script type="text/javascript">
+
+	
+	var indicedial = 2
+	var capa = 0
+	var flecha = 0
+	var indicelistadogcode = 0
+	var indiceelementoslistadogcode = 0
+	var lineagcodeprovisional = ""
+	var indiceayuda = 1
+	var temporizador;
+	var temporizador1;
+	
+	
+	var X = 0
+	var X0 = 0
+	var Y = 0
+	var Y0 = 0
+	var Z = 0
+	var Z0 = 0
+	var F = 0
+	var XX = 0
+	var YY = 0
+
+	var incrementoX = 0
+	var incrementoY = 0
+
+	var contador = 0
+	
+	var lasermanual = 0
+
+
+	var fondoayuda = ""
+
+	gcode = new Array(50);
+		gcode[0] = "G20";
+		gcode[1] = "G91";
+		gcode[2] = "G28 X2.000 Y5.000 Z0.000 F500.0";
+		gcode[3] = "G01 X-1.50 Y-0.50 Z0.000 F500.0";
+		gcode[4] = "G01 X1.500 Y-0.50 Z0.000 F500.0";
+		gcode[5] = "G02 X2.000 Y-2.00 R2.000 F500.0";
+		gcode[6] = "G02 X2.000 Y1.000 R2.000 F500.0";
+		gcode[7] = "G03 X3.000 Y2.000 R2.000 F500.0";
+		gcode[8] = "G02 X10.00 Y2.500 R2.000 F500.0";
+		gcode[9] = "G28 X-17.0 Y-2.50 Z0.000 F500.0";
+		gcode[10] = "G03 X12.00 Y7.000 R2.000 F500.0";
+		gcode[11] = "G03 X8.000 Y-4.00 R2.000 F500.0";
+		gcode[12] = "G03 X-1.50 Y-1.50 R2.000 F500.0";
+		gcode[13] = "G03 X-1.50 Y1.500 R2.000 F500.0";
+		gcode[14] = "G28 X-15.5 Y-4.50 Z0.000 F500.0";
+		gcode[15] = "G02 X0.400 Y-0.40 R2.000 F500.0";
+		gcode[16] = "G02 X0.400 Y0.400 R2.000 F500.0";
+		gcode[17] = "G02 X-0.40 Y0.400 R2.000 F500.0";
+		gcode[18] = "G02 X-0.40 Y-0.40 R2.000 F500.0";
+		gcode[19] = "G28 X6.000 Y1.400 Z0.000 F500.0";
+		gcode[20] = "G02 X6.000 Y-4.00 R2.000 F500.0";
+		gcode[21] = "G01 X5.000 Y0.000 Z0.000 F500.0";
+		gcode[22] = "G02 X1.000 Y1.000 R2.000 F500.0";
+		gcode[23] = "G02 X-1.00 Y1.000 R2.000 F500.0";
+		gcode[24] = "G03 X-5.00 Y2.500 R2.000 F500.0";
+		gcode[25] = "G28 X10.50 Y4.500 Z0.000 F500.0";
+		gcode[26] = "";
+		gcode[27] = "";
+		gcode[28] = "";
+		gcode[29] = "";
+		gcode[30] = "";
+		gcode[31] = "";
+		gcode[32] = "";
+		gcode[33] = "";
+		gcode[34] = "";
+		gcode[35] = "";
+		gcode[36] = "";
+		gcode[37] = "";
+		gcode[38] = "";
+		gcode[39] = "";
+		gcode[40] = "";
+		gcode[41] = "";
+		gcode[42] = "";
+		gcode[43] = "";
+		gcode[44] = "";
+		gcode[45] = "";
+		gcode[46] = "";
+		gcode[47] = "";
+		gcode[48] = "";
+		gcode[49] = "";
+		gcode[50] = "";
+		
+
+
+
+
+
+
+
+
+	function cargacompleta()
+	
+	{
+
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.clearRect(0, 0, c.width, c.height);
+	var img = document.getElementById("fondoayuda");
+    	ctx.drawImage(img, 0, 0);
+	
+
+	}
+
+
+	function cambiarayuda()
+
+		{
+		
+		var fondoayuda = "fondoayuda" + indiceayuda + ".png"
+	
+		document.getElementById("fondoayuda").src=fondoayuda;
+
+		
+	
+		}
+
+
+
+
+	function cambiardial()
+
+		{
+
+		
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		c.width=c.width;
+
+		document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+
+		lasermanual = 0
+
+		document.getElementById("cut").src="teclacutmanual.png";
+
+		document.getElementById("stop").src="teclastopmanual.png";
+
+		desplazamientomanual('joystick00');
+		
+		stoptemporizadorleergcode(); 
+
+
+
+		for (var i=0;i<10;i++)
+			{
+
+			var indicegcode = "gcode" + i
+			
+			var color = "#58FA58"
+
+
+   			document.getElementById(indicegcode).innerHTML = "<font color = color>" + "" + "</font>";
+			
+					
+			}
+
+		X = 0
+
+		Y = 0
+
+		document.getElementById("joystick").src="joystick00.png";
+
+		document.getElementById('tecla1').play()		
+
+		indicedial = indicedial + 1
+		if (indicedial>3)
+  			{
+        		indicedial = 0;
+        		}
+	
+		
+
+		var dial = "dial" + indicedial + ".png"
+	
+		document.getElementById("dial").src=dial;
+		capa = 0
+		flecha = 0
+
+		if (indicedial==2)
+
+		{
+
+		
+		var fondoayuda = "fondoayuda" + indiceayuda + ".png"
+		document.getElementById("fondoayuda").src=fondoayuda;
+
+		}
+		
+
+		}
+
+
+	
+
+
+
+
+		
+
+		
+
+
+	
+		
+			function listadogeneralgcode()
+
+			{
+			
+			indicelistadogcode = flecha
+		
+			for (var i=0;i<10;i++)
+			{
+			var indicegcode = "gcode" + i
+			
+			var color = "#58FA58"
+
+
+   			document.getElementById(indicegcode).innerHTML = "<font color = color>" + "N" + indicelistadogcode + "&nbsp" + gcode[i + flecha] + "</font>";
+			indicelistadogcode = indicelistadogcode + 1
+					
+			}
+			
+			
+    			}
+
+
+
+
+
+
+
+
+
+		function elementoslistadogcode()
+
+		{
+		indiceelementoslistadogcode = flecha
+		
+		for (var i=0;i<10;i++)
+			{
+
+			var indicegcode = "gcode" + i
+			
+			var color = "#58FA58"
+
+
+   			document.getElementById(indicegcode).innerHTML = "<font color = color>" + "" + "</font>";
+			
+					
+			}
+
+		
+		var color = "#58FA58"
+		document.getElementById("gcode0").innerHTML = "<font color = color>" +  "N" + indiceelementoslistadogcode + "&nbsp" + gcode[indiceelementoslistadogcode] + "</font>";
+		
+		
+		}
+
+
+
+
+
+
+			
+		function intro ()
+
+		{
+		
+		document.getElementById('tecla1').play()
+
+
+
+		if ((indicedial==0)&&(capa==0))
+
+  		{
+		
+		clearInterval(temporizador1);
+		clearInterval(temporizador);
+
+		leergcode();
+ 		
+		}
+
+
+		else if ((indicedial==3)&&(capa==0))
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Aquí se inicia el modo EDIT ",20,50);
+		ctx.strokeText("Se muestra el listado del código G-code ",20,80);
+		ctx.strokeText("Nos podemos mover por él mediante las teclas arriba y abajo",20,110);
+		ctx.strokeText("Para seleccionar una de estas lineas hemos de volver a pulsar INTRO",20,140);
+
+		clearInterval(temporizador1);
+		clearInterval(temporizador);
+		document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+
+
+		capa = capa + 1
+ 		listadogeneralgcode();
+		}
+
+		else if ((indicedial==3)&&(capa==1))
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Ahora hemos seleccionado una línea de código",20,50);
+		ctx.strokeText("Podemos cambiar de línea mediante las teclas arriba y abajo",20,80);
+		ctx.strokeText("Pulsando ERASE borramos todo su contenido",20,110);
+		ctx.strokeText("Para pasar a editar esta línea hemos de volver a pulsar INTRO",20,140);
+
+
+		capa = capa + 1
+ 		elementoslistadogcode();
+		}
+
+		else if ((indicedial==3)&&(capa==2))
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Ahora hemos seleccionado una línea de código para poderla editar",20,50);
+		ctx.strokeText("Mediante la tecla ERASE podemos borrar los caracteres individualmente",20,80);
+		ctx.strokeText("Podemos utilizar el teclado y la barra espaciadora para introducir",20,110);
+		ctx.strokeText("todo el código",20,140);
+		ctx.strokeText("Para volver atrás y poder cambiar de linea podemos pulsar la tecla ",20,170);
+		ctx.strokeText("INTRO o la tecla ESC",20,200);
+
+
+		capa = capa + 1
+		lineagcodeprovisional = gcode[indiceelementoslistadogcode];
+ 		
+		}
+
+		else if ((indicedial==3)&&(capa==3))
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Ahora hemos seleccionado una línea de código",20,50);
+		ctx.strokeText("Podemos cambiar de línea mediante las teclas arriba y abajo",20,80);
+		ctx.strokeText("Pulsando ERASE borramos todo su contenido",20,110);
+		ctx.strokeText("Para pasar a editar esta línea hemos de volver a pulsar INTRO",20,140);
+
+		capa = capa - 1
+		lineagcodeprovisional = gcode[indiceelementoslistadogcode];
+		elementoslistadogcode();
+		}		
+
+		else if (indicedial==2)
+
+  		{
+		
+		clearInterval(temporizador1);
+		clearInterval(temporizador);
+		document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+
+
+		indiceayuda = 1
+		cambiarayuda();
+ 		
+		}
+
+
+		}
+
+
+
+
+
+
+		function escape ()
+
+		{
+
+		document.getElementById('tecla1').play()
+
+
+		if (capa==1)
+		{
+
+
+
+
+		}
+
+		
+		if (capa == 2)
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Aquí se inicia el modo EDIT ",20,50);
+		ctx.strokeText("Se muestra el listado del código G-code ",20,80);
+		ctx.strokeText("Nos podemos mover por él mediante las teclas arriba y abajo",20,110);
+		ctx.strokeText("Para seleccionar una de estas lineas hemos de volver a pulsar INTRO",20,140);
+
+
+		capa = capa - 1
+		flecha = 0
+		listadogeneralgcode()
+
+		}
+
+
+
+
+		if (capa == 3)
+
+  		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.font="16pt Verdana";
+		ctx.lineWidth='1';
+		ctx.strokeStyle='#369';
+		ctx.strokeText("Ahora hemos seleccionado una línea de código",20,50);
+		ctx.strokeText("Podemos cambiar de línea mediante las teclas arriba y abajo",20,80);
+		ctx.strokeText("Pulsando ERASE borramos todo su contenido",20,110);
+		ctx.strokeText("Para pasar a editar esta línea hemos de volver a pulsar INTRO",20,140);
+
+		capa = capa - 1
+		flecha = 0
+		elementoslistadogcode()
+
+
+
+		}
+
+		
+		if (indicedial==0)
+		{
+		stoptemporizadorleergcode();
+
+		}
+
+		if ((indicedial==1)&&(capa==1))
+
+  		{
+
+		corte = "no"
+		
+
+		
+		}
+
+
+		}
+
+
+
+
+
+			function arriba ()
+
+			{
+			
+			document.getElementById('tecla1').play()
+		
+
+			if ((indicedial==3)&&(capa==2)&&(indiceelementoslistadogcode>0))
+
+  			{
+			flecha = flecha - 1
+
+ 			
+ 			elementoslistadogcode();
+			}
+
+			
+			else if ((indicedial==3)&&(capa==1)&&(flecha>0))
+
+  			{
+			flecha = flecha - 1
+
+ 		
+ 			listadogeneralgcode();
+			}
+
+			
+
+			}
+
+
+
+
+
+
+
+
+
+		function abajo ()
+
+		{
+		
+		document.getElementById('tecla1').play()
+		
+		if ((indicedial==3)&&(capa==2)&&(indiceelementoslistadogcode<50))
+
+  		{
+		flecha = flecha + 1
+ 		
+ 		elementoslistadogcode();
+		}
+
+		else if ((indicedial==3)&&(capa==1)&&(flecha<41))
+
+  		{
+		flecha = flecha + 1
+
+			
+ 		listadogeneralgcode();
+		}
+		
+
+			
+
+		}
+
+
+
+
+
+		function derecha()
+
+		{
+
+		document.getElementById('tecla1').play()
+
+		document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+
+
+		if ((indicedial==2)&&(indiceayuda<20))
+
+  		{
+
+		indiceayuda = indiceayuda + 1
+ 		
+ 		cambiarayuda();
+
+		}
+
+
+			
+		}
+
+
+
+
+
+		function izquierda()
+
+		{
+
+		document.getElementById('tecla1').play()
+
+		document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+		document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp";
+
+
+		if ((indicedial==2)&&(indiceayuda>1))
+
+  		{
+
+		indiceayuda = indiceayuda - 1
+ 		
+ 		cambiarayuda();
+
+		}
+
+		
+
+		}
+
+
+
+
+
+
+			function borrar ()
+
+			{
+			
+			document.getElementById('tecla1').play()
+
+
+			if ((indicedial==3)&&(capa==2))
+
+  			{
+			gcode[indiceelementoslistadogcode] = ""
+ 			lineagcodeprovisional = ""
+ 			elementoslistadogcode();
+			}
+			
+			else if ((indicedial==3)&&(capa==3))
+
+  			{
+			
+        		var lineacodigo = gcode[indiceelementoslistadogcode];
+			var lineacodigosincola = ""
+
+			elementolineacodigo = new Array(lineacodigo.length-1)
+
+			for (var i=0;i<lineacodigo.length-1;i++)
+			{
+			elementolineacodigo.push(lineacodigo[i]);
+			lineacodigosincola = lineacodigosincola + lineacodigo[i];
+			}		
+
+
+			gcode[indiceelementoslistadogcode] = lineacodigosincola
+        		lineagcodeprovisional = gcode[indiceelementoslistadogcode]
+ 			
+ 			elementoslistadogcode();
+			}
+		
+
+			else if (indicedial==0)
+			
+			
+			despejarcanvas();
+
+			}
+		
+		
+
+
+
+
+
+
+
+
+		function escribir (valor)
+
+		{
+
+		document.getElementById('tecla1').play()
+
+		
+
+		if ((indicedial==3)&&(capa==3))
+
+  		{
+		lineagcodeprovisional = lineagcodeprovisional + valor;
+		gcode[indiceelementoslistadogcode] = lineagcodeprovisional;
+		elementoslistadogcode();
+		}
+		
+		
+		}
+
+
+	function despejarcanvas()
+		
+		{
+
+			var c = document.getElementById("Canvas");
+			var ctx = c.getContext("2d");
+			ctx.clearRect(0, 0, c.width, c.height);
+			
+			
+
+		}
+
+
+
+		function iniciarstart()
+
+		{
+
+		if (indicedial==0)
+
+		{
+		document.getElementById('tecla1').play()		
+
+		leergcode();
+
+
+		}
+		}
+
+
+
+
+
+
+		function leergcode()
+	
+		{
+			
+			
+			
+			
+
+			X = 0
+			Y = 0
+			Z = 0
+			var incrementopulgada = 1
+			var incremental = 0
+			
+			i = 0
+			
+			contador = 1
+
+
+			temporizadorleergcode();
+			
+			
+		}
+
+
+
+
+
+
+		function temporizadorleergcode()
+
+
+			{
+ 
+			
+			
+  			temporizador = setInterval(prelectura, 1000);
+
+  			
+			
+			}
+
+
+
+
+
+		function stoptemporizadorleergcode() 
+
+		{
+		document.getElementById('tecla1').play()
+
+   		clearInterval(temporizador);
+
+		
+
+		}
+	
+
+
+
+
+
+
+		function prelectura()
+
+
+
+		{
+
+		var c = document.getElementById("Canvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		c.width=c.width;
+		
+			
+
+		if (contador<51)
+		{
+		contador = contador + 1;
+		}
+		else if (contador>=50)
+		{
+		stoptemporizadorleergcode();
+		}
+
+		X = 0
+		Y = 0
+		Z = 0
+
+		lectura();
+
+		}
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+	function lectura()
+
+
+	{
+
+
+	if (indicedial==0)
+
+	
+
+	{
+
+		for (var i=0;i<contador;i++)
+
+		{
+			document.getElementById("gcode0").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + gcode[i];
+
+			X0 = X
+			Y0 = Y
+			Z0 = Z
+
+			var lineadecodigo = gcode[i];
+			funciongcode =""
+			elementolineadecodigo0 = new Array(3)
+			for (var h=0;h<3;h++)
+			{
+			
+			elementolineadecodigo0.push(lineadecodigo[h]);
+			funciongcode = funciongcode + lineadecodigo[h];
+			
+			}
+		
+		
+		if (funciongcode=="")
+
+		{
+
+		stoptemporizadorleergcode(); 
+
+
+		}
+
+		
+		if (funciongcode=="G91")
+
+		{
+
+		incremental = 1
+
+
+		}
+		
+
+		
+		if (funciongcode=="G90")
+
+		{
+
+		incremental = 0
+
+
+		}
+
+
+
+		
+		if (funciongcode=="G21")
+
+		{
+
+		incrementopulgada = 1
+
+
+		}
+
+
+		else if (funciongcode=="G20")
+
+		{
+
+		incrementopulgada = 2
+
+
+		}
+
+
+
+		else if (funciongcode=="G28")
+
+  		{
+		
+		var lineadecodigo = gcode[i];
+			X =""
+			elementolineadecodigo1 = new Array(5)
+			for (var h=5;h<10;h++)
+			{
+			
+			elementolineadecodigo1.push(lineadecodigo[h]);
+			X = X + lineadecodigo[h]
+
+
+			}
+			X = parseFloat(X)
+
+
+		var lineadecodigo = gcode[i];
+			Y =""
+			elementolineadecodigo2 = new Array(5)
+			for (var h=12;h<17;h++)
+			{
+			
+			elementolineadecodigo2.push(lineadecodigo[h]);
+			Y = Y + lineadecodigo[h];
+			
+			}
+			Y = parseFloat(Y)
+			
+
+		var lineadecodigo = gcode[i];
+			Z =""
+			elementolineadecodigo3 = new Array(5)
+			for (var h=19;h<24;h++)
+			{
+			
+			elementolineadecodigo3.push(lineadecodigo[h]);
+			Z = Z + lineadecodigo[h];
+			
+			}
+			Z = parseFloat(Z)
+			
+
+		var lineadecodigo = gcode[i];
+			F =""
+			elementolineadecodigo4 = new Array(5)
+			for (var h=26;h<31;h++)
+			{
+			
+			elementolineadecodigo4.push(lineadecodigo[h]);
+			F = F + lineadecodigo[h];
+			
+			}
+		
+
+
+		if ((incremental==1)&&(incrementopulgada==1))
+
+			{
+			
+			X = X + X0
+			Y = Y + Y0
+			Z = Z + Z0
+			movex(X,Y);
+
+			}
+
+		else if ((incremental==1)&&(incrementopulgada==2))
+
+			{
+			
+			X = X + X0
+			Y = Y + Y0
+			Z = Z + Z0
+			XX = X*25.4
+			YY = Y*25.4
+			movex(XX,YY);
+
+			}
+
+		
+		else if ((incremental==0)&&(incrementopulgada==1))
+
+			{
+			
+			
+			movex(X,Y);
+
+			}
+
+
+		else if ((incremental==0)&&(incrementopulgada==2))
+
+			{
+			
+			XX = X*25.4
+			YY = Y*25.4
+			movex(XX,YY);
+
+			}
+
+
+		}
+
+
+		else if ((funciongcode=="G00")||(funciongcode=="G01"))
+
+  		{
+
+		var lineadecodigo = gcode[i];
+			X =""
+			elementolineadecodigo1 = new Array(5)
+			for (var h=5;h<10;h++)
+			{
+			
+			elementolineadecodigo1.push(lineadecodigo[h]);
+			X = X + lineadecodigo[h];
+			
+			}
+			X = parseFloat(X)
+			
+
+		var lineadecodigo = gcode[i];
+			Y =""
+			elementolineadecodigo2 = new Array(5)
+			for (var h=12;h<17;h++)
+			{
+			
+			elementolineadecodigo2.push(lineadecodigo[h]);
+			Y = Y + lineadecodigo[h];
+			
+			}
+			Y = parseFloat(Y)
+			
+
+
+		
+		var lineadecodigo = gcode[i];
+			Z =""
+			elementolineadecodigo3 = new Array(5)
+			for (var h=19;h<24;h++)
+			{
+			
+			elementolineadecodigo3.push(lineadecodigo[h]);
+			Z = Z + lineadecodigo[h];
+			
+			}
+			Z = parseFloat(Z)
+			
+
+
+			var lineadecodigo = gcode[i];
+			F =""
+			elementolineadecodigo4 = new Array(5)
+			for (var h=26;h<31;h++)
+			{
+			
+			elementolineadecodigo4.push(lineadecodigo[h]);
+			F = F + lineadecodigo[h];
+			
+			}
+		
+		
+		if (incremental==1)
+
+			{
+			
+			X = X + X0
+			Y = Y + Y0
+			Z = Z + Z0
+			
+				if (Z==0)
+		
+				{		
+				
+					if (incrementopulgada==2)
+		
+					{
+					XX = X*25.4
+					YY = Y*25.4
+					linex(XX,YY);
+					}
+					
+					if (incrementopulgada==1)
+		
+					{
+					
+					linex(X,Y);
+					}
+
+				
+		
+				}
+
+				else if (Z>0)
+		
+				{	
+					if (incrementopulgada==2)
+		
+					{
+					XX = X*25.4
+					YY = Y*25.4
+					movex(XX,YY);
+					}
+					
+					if (incrementopulgada==1)
+		
+					{
+					
+					movex(X,Y);
+					}	
+
+				
+		
+				}
+			
+			}
+
+
+		else if (Z==0)
+		
+		{		
+
+					if (incrementopulgada==2)
+		
+					{
+					XX = X*25.4
+					YY = Y*25.4
+					linex(XX,YY);
+					}
+					
+					if (incrementopulgada==1)
+		
+					{
+					
+					linex(X,Y);
+					}
+		
+		
+		
+		}
+
+		
+
+
+		else if (Z>0)
+		
+		{		
+
+					if (incrementopulgada==2)
+		
+					{
+					XX = X*25.4
+					YY = Y*25.4
+					movex(XX,YY);
+					}
+					
+					if (incrementopulgada==1)
+		
+					{
+					
+					movex(X,Y);
+					}
+
+		
+		
+		}
+
+		}
+		
+		
+
+
+		else if (funciongcode=="G02")
+
+  			{
+
+			var lineadecodigo = gcode[i];
+			X =""
+				elementolineadecodigo1 = new Array(5)
+				for (var h=5;h<10;h++)
+				{
+			
+				elementolineadecodigo1.push(lineadecodigo[h]);
+				X = X + lineadecodigo[h];
+			
+				}
+				X = parseFloat(X)
+			
+
+			var lineadecodigo = gcode[i];
+			Y =""
+				elementolineadecodigo2 = new Array(5)
+				for (var h=12;h<17;h++)
+				{
+			
+				elementolineadecodigo2.push(lineadecodigo[h]);
+				Y = Y + lineadecodigo[h];
+			
+				}
+				Y = parseFloat(Y)
+			
+
+			var lineadecodigo = gcode[i];
+			F =""
+				elementolineadecodigo4 = new Array(5)
+				for (var h=26;h<31;h++)
+				{
+			
+				elementolineadecodigo4.push(lineadecodigo[h]);
+				F = F + lineadecodigo[h];
+			
+				}
+
+			
+
+
+			if ((X>0)&&(Y>0))		
+
+				{
+
+		
+					if (incremental==1)
+
+					{
+			
+					X = X + X0
+					Y = Y + Y0
+			
+					var CX = X
+		
+					var CY = Y - (Y-Y0)
+			
+						if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+
+						if (incrementopulgada==1)
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+		
+					if (incremental==0)
+
+				{
+				
+
+					if ((X>=X0)&&(Y>=Y0))
+
+					{
+
+				
+				var CX = X
+		
+					var CY = Y - (Y-Y0)
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+
+
+
+					else if ((X<X0)&&(Y<Y0))
+
+					{
+
+					var CX = X
+		
+					var CY = Y - (Y-Y0)
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+
+					}
+
+
+
+					else if ((X<X0)||(Y<Y0))
+
+					{
+
+				var CX = X0
+		
+				var CY = Y
+				
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+
+
+
+
+
+				
+				}
+
+
+
+
+
+				}
+		
+			else if ((X<0)&&(Y<0))		
+
+				{
+
+				
+		
+					
+					if (incremental==1)
+
+					{
+			
+					X = X + X0
+					Y = Y + Y0
+			
+
+					
+
+					var CX = X
+		
+					var CY = Y - (Y-Y0)
+
+			
+						if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+
+						if (incrementopulgada==1)
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+		
+					if (incremental==0)
+
+					{
+					var CX = X
+		
+					var CY = Y - (Y-Y0)
+
+						if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+					}
+		
+				}
+
+
+			else if ((X<0)||(Y<0))		
+
+				{
+				
+		
+					if (incremental==1)
+
+					{
+			
+					X = X + X0
+					Y = Y + Y0
+
+					var CX = X0
+
+					var CY = Y
+					
+					//*var CX = X
+		
+					//*var CY = Y - (Y-Y0)
+			
+					
+					
+						if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+					}
+
+					if (incremental==0)
+
+					{
+					
+
+					var CX = X0
+		
+					var CY = Y 
+		
+					if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+		
+					}
+				}
+
+			}
+
+
+
+		else if (funciongcode=="G03")
+
+  			{
+
+				var lineadecodigo = gcode[i];
+				X =""
+				elementolineadecodigo1 = new Array(5)
+				for (var h=5;h<10;h++)
+				{
+			
+				elementolineadecodigo1.push(lineadecodigo[h]);
+				X = X + lineadecodigo[h];
+			
+				}
+		
+				X = parseFloat(X)
+
+
+				var lineadecodigo = gcode[i];
+				Y =""
+				elementolineadecodigo2 = new Array(5)
+				for (var h=12;h<17;h++)
+				{
+			
+				elementolineadecodigo2.push(lineadecodigo[h]);
+				Y = Y + lineadecodigo[h];
+			
+				}
+
+				Y = parseFloat(Y)
+
+				var lineadecodigo = gcode[i];
+				F =""
+				elementolineadecodigo4 = new Array(5)
+				for (var h=26;h<31;h++)
+				{
+			
+				elementolineadecodigo4.push(lineadecodigo[h]);
+				F = F + lineadecodigo[h];
+			
+				}
+
+
+
+		
+
+
+			if ((X>=0)&&(Y>=0))		
+
+				{
+		
+				if (incremental==1)
+
+				{
+			
+				X = X + X0
+				Y = Y + Y0
+			
+				var CX = X0
+		
+				var CY = Y
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+				}
+				
+				if (incremental==0)
+
+				{
+				
+
+					if ((X>=X0)&&(Y>=Y0))
+
+					{
+
+				
+				var CX = X0
+		
+				var CY = Y
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+
+
+
+					else if ((X<X0)&&(Y<Y0))
+
+					{
+
+					var CX = X0
+		
+				var CY = Y
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+
+					}
+
+
+
+					else if ((X<X0)||(Y<Y0))
+
+					{
+
+				var CX = X
+		
+				var CY = Y - (Y-Y0)
+				
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+					}
+
+
+
+
+
+				
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+				}
+				
+		
+			else if ((X<0)&&(Y<0))		
+
+				{
+
+				if (incremental==1)
+
+				{
+			
+				X = X + X0
+				Y = Y + Y0
+			
+				var CX = X0
+		
+				var CY = Y
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+
+				}
+		
+				
+				if (incremental==0)
+
+				{
+				var CX = X0
+		
+				var CY = Y
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);	
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+				}
+				}
+
+
+			else if ((X<0)||(Y<0))		
+
+				{
+		
+
+				if (incremental==1)
+
+				{
+			
+				X = X + X0
+				Y = Y + Y0
+
+				
+			
+				var CX = X
+		
+				var CY = Y - (Y-Y0)
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+
+
+				}
+				
+				if (incremental==0)
+
+				{
+
+				var CX = X
+		
+				var CY = Y - (Y-Y0)
+		
+				if (incrementopulgada==2)
+		
+						{
+						XX = X*25.4
+						YY = Y*25.4
+						XX0 = X0*25.4
+						YY0 = Y0*25.4
+						CXX = CX*25.4
+		
+						CYY = CY*25.4
+						curva(XX,YY,CXX,CYY,XX0,YY0);
+						movex(XX,YY);
+						}
+						if (incrementopulgada==1)
+		
+						{
+						curva(X,Y,CX,CY,X0,Y0);
+						movex(X,Y);
+						}
+				}
+				}
+
+		
+			
+		
+
+		
+
+			}
+		
+			
+
+
+			}
+
+
+
+			if (incrementopulgada==2)
+
+
+			{
+
+
+			var c = document.getElementById("Canvas");
+			var ctx = c.getContext("2d");
+			var laser = document.getElementById("boquillalaser");
+			ctx.drawImage(laser, XX-55, YY-110);
+			
+			document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + X;
+			document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + Y;
+			document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + Z;
+			document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + F;
+
+
+			}
+
+
+
+			
+			else if (incrementopulgada==1)
+
+
+			{
+
+
+			var c = document.getElementById("Canvas");
+			var ctx = c.getContext("2d");
+			var laser = document.getElementById("boquillalaser");
+			ctx.drawImage(laser, X-55, Y-110);
+			
+			document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + X;
+			document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + Y;
+			document.getElementById("Z").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + Z;
+			document.getElementById("F").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + F;
+
+
+			}
+
+
+			
+
+
+
+			if (i==51)
+			{
+
+			stoptemporizadorleergcode(); 
+
+			}
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+	function curva(x,y,cx,cy,x0,y0)
+
+	{
+	document.getElementById('lasercut').play()
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.lineWidth = 4;
+	
+	ctx.strokeStyle = '#000099';
+	ctx.beginPath();
+	ctx.bezierCurveTo(x, y, cx, cy, x0, y0);
+	ctx.stroke();
+
+
+
+	}
+
+
+		
+
+
+
+
+
+
+
+
+
+
+	function linex(x,y)
+
+	{
+	document.getElementById('lasercut').play()
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.lineWidth = 4;
+	
+	ctx.strokeStyle = '#000099';
+	ctx.lineTo(x,y);
+
+	
+
+	ctx.stroke();
+
+	}
+	
+
+
+
+
+	function movex(x,y)
+
+	{
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.moveTo(x,y);
+
+	ctx.stroke();
+
+	}
+
+ 			
+	
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	function introducirdatos()
+
+	
+	{
+
+	if (indicedial==3)
+	{
+
+	document.getElementById('tecla1').play()
+	
+
+
+	introducirgcode=prompt('N' + indiceelementoslistadogcode,'');
+	gcode[indiceelementoslistadogcode]=introducirgcode
+	elementoslistadogcode();
+	}
+	}
+
+
+
+
+
+
+
+
+
+	function iniciarmanual()
+
+
+	{
+
+	if (indicedial==1)
+
+	{
+	document.getElementById('tecla1').play()
+
+	X = 0
+
+	Y = 0
+
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.clearRect(0, 0, c.width, c.height);
+	c.width=c.width;
+	
+	desplazamientomanual('joystick00');
+
+	document.getElementById("cut").src="teclacutmanual.png";
+
+	document.getElementById("stop").src="teclastopmanual.png";
+	lasermanual = 0
+
+	
+	}
+
+
+
+	}
+
+
+
+	function desplazamientomanual(m)
+
+
+	
+
+	{
+	
+	if ((indicedial==1)&&(m=='joystick00'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick00.png";
+	
+	incrementoX = 0
+	incrementoY = 0
+	parartemporizador1();
+	
+	
+
+	
+	}
+
+
+	if ((indicedial==1)&&(m=='joystick01'))
+
+	{
+	
+	
+
+	document.getElementById("joystick").src="joystick01.png";
+
+	incrementoX = 0
+	incrementoY = -1
+	linemanual();
+
+
+	}
+	
+	
+	if ((indicedial==1)&&(m=='joystick02'))
+
+	
+
+
+	{
+
+	document.getElementById("joystick").src="joystick02.png";
+
+	incrementoX = 1
+	incrementoY = -1
+	linemanual();
+
+	}
+
+
+	if ((indicedial==1)&&(m=='joystick03'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick03.png";
+
+	incrementoX = 1
+	incrementoY = 0
+	linemanual();
+	}
+
+
+	if ((indicedial==1)&&(m=='joystick04'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick04.png";
+
+	incrementoX = 1
+	incrementoY = 1 
+	linemanual();
+	}
+
+
+	if ((indicedial==1)&&(m=='joystick05'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick05.png";
+
+	
+	incrementoX = 0
+	incrementoY = 1
+	linemanual();
+	}
+	
+	
+	if ((indicedial==1)&&(m=='joystick06'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick06.png";
+
+	incrementoX = -1
+	incrementoY = 1 
+	linemanual();
+	}
+
+
+	if ((indicedial==1)&&(m=='joystick07'))
+
+
+	{
+
+	document.getElementById("joystick").src="joystick07.png";
+
+	incrementoX = -1
+	incrementoY = 0
+	linemanual();
+
+	}
+
+	
+	if ((indicedial==1)&&(m=='joystick08'))
+
+
+	{
+
+	
+	
+	document.getElementById("joystick").src="joystick08.png";
+
+	incrementoX = -1
+	incrementoY = -1
+	linemanual();
+	}
+	
+	
+
+	}
+
+
+
+
+
+
+	function parartemporizador1()
+
+
+	{
+
+	
+	clearInterval(temporizador1);
+
+	}
+
+
+
+
+
+
+
+	function linemanual()
+
+
+	{
+
+	
+
+	var temporizador1;
+
+
+    	temporizador1 = setInterval(cortemanual, 1000);
+
+	
+
+
+	}
+
+
+
+	function todolasermanual()
+
+	{
+
+	if (indicedial==1)
+
+	{
+
+	document.getElementById('tecla1').play()
+	
+	lasermanual = 1
+
+
+	document.getElementById("cut").src="teclacutmanualrojo.png";
+
+	document.getElementById("stop").src="teclastopmanual.png";
+
+	}
+	}
+
+
+	function apagarlasermanual()
+
+	{
+	if (indicedial==1)
+
+	{
+
+	document.getElementById('tecla1').play()
+	lasermanual = 0
+
+	document.getElementById("cut").src="teclacutmanual.png";
+
+	document.getElementById("stop").src="teclastopmanualverde.png";
+
+	}
+	}
+
+
+
+
+
+
+	function cortemanual()
+
+
+	{
+
+
+	if (indicedial==1)
+
+	{
+
+	
+
+
+	X = X + incrementoX
+	Y = Y + incrementoY
+
+	
+
+	document.getElementById("X").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + X;
+	document.getElementById("Y").innerHTML = "<font color = 'white'>" + "&nbsp" + "&nbsp" + Y;
+
+	cortelasermanual();
+
+
+	}
+
+	}
+
+
+	function cortelasermanual()
+
+
+	{
+	
+
+
+
+
+	if (lasermanual==1)
+
+	{
+
+	document.getElementById('pasoapaso').play()
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	ctx.lineWidth = 4;
+	
+	ctx.strokeStyle = '#000099';
+	
+	ctx.lineTo(X,Y);
+
+	ctx.stroke();
+	}
+
+	else if (lasermanual==0)
+
+	{
+
+	
+	var c = document.getElementById("Canvas");
+	var ctx = c.getContext("2d");
+	
+	ctx.moveTo(X,Y);
+	ctx.stroke();
+	}
+
+	}
+
+
+
+
+	function botonemergencia()
+
+	{
+
+	if (indicedial==0)
+
+	{
+
+	document.getElementById('alarm').play()
+	stoptemporizadorleergcode();
+
+	}
+
+	if (indicedial==1)
+
+	{
+
+	document.getElementById('alarm').play()
+	iniciarmanual();
+
+	}
+
+	}
+
+
+
+	</script>
+
+
+
+
+</head>
+
+<body onload="cargacompleta();" bgcolor ="black">
+
+
+<audio id="tecla1" src="tecla.mp3"></audio>
+<audio id="alarm" src="alarm.mp3"></audio>
+<audio id="lasercut" src="lasercut.mp3"></audio>
+<audio id="pasoapaso" src="pasoapaso.mp3"></audio>
+
+
+
+	<table width="100%" border=”1” bordercolor="#0B6121" cellpadding="2" cellspacing="1" BGCOLOR="#0B6121">
+		<tr>
+			<td colspan="2" bgcolor="#2E9AFE">
+			<font color="#0B6121" size="7" font face="fantasy">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			Simulador CNC
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td height="345" width="810" bgcolor="#D0F5A9" id="display">
+			<canvas id="Canvas" width="810" height="407" style="border:1px solid #D0F5A9;">
+			</canvas>
+			</td>
+			
+			<td valign="top">
+				<table width="100%" border=”1” bordercolor="#AACCEE" cellpadding="2" cellspacing="1" BGCOLOR="#AACCEE"  height="300">
+				<tr>
+				<td height="25" colspan="2" bgcolor="#848484" width="33" align="center">
+				<font color="white" face="calibri" size="4">
+				G-CODE
+				</font>
+				</td>
+				</tr> 
+				<tr>
+				<td id="gcode0">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode1">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode2">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode3">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode4">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode5">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode6">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode7">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode8">
+				</td>
+				</tr>
+				<tr>
+				<td id="gcode9">
+				</td>
+				</tr>
+				
+				</table>
+				
+				<table width="100%">
+				<tr>
+				<td height="25" width="35" bgcolor="#FFFF00"  align="center">
+				<font color="black" face="calibri" size="4">
+				X
+				<font>
+				</td>
+				<td height="25"  bgcolor="#848484" id="X">
+				</td>
+				</tr> 
+				<tr>
+				<td height="25" width="35" bgcolor="#FFFF00"  align="center">
+				<font color="black" face="calibri" size="4">
+				Y
+				<font>
+				</td>
+				<td height="25"  bgcolor="#848484" id="Y">
+				</td>
+				<tr>
+				<td height="25" width="35" bgcolor="#FFFF00"  align="center">
+				<font color="black" face="calibri" size="4">
+				Z
+				<font>
+				</td>
+				<td height="25"  bgcolor="#848484" id="Z">
+				</td>
+				</tr> 
+				<tr>
+				<td height="25" width="35" bgcolor="#FFFF00"  align="center">
+				<font color="black" face="calibri" size="4">
+				F
+				<font>
+				</td>
+				<td height="25"  bgcolor="#848484" id="F">
+				</td>
+				</tr> 
+				</table>
+			</td>
+		</tr>
+	</table>
+
+	<table>
+				<tr>
+				<td>
+				<table>
+				
+				<td align="center">
+				<input type=image src="dial2.png" onclick="cambiardial(1,1);" id="dial" class="myButton" width="165" height="123">
+				</table>
+				</td>
+				
+
+
+				<td>
+
+	<table>
+
+	<tr>
+
+	<td>
+
+	<img src="joystick00.png" width="150" height="150" usemap="#joystick" id="joystick">
+	<map name="joystick">
+  	<area shape="circle" coords="30,30,20" a href="#" onmouseover="desplazamientomanual('joystick08')"/>
+	<area shape="circle" coords="75,30,20" a href="#" onmouseover="desplazamientomanual('joystick01')"/>
+	<area shape="circle" coords="120,30,20" a href="#" onmouseover="desplazamientomanual('joystick02')"/>
+	<area shape="circle" coords="120,75,20" a href="#" onmouseover="desplazamientomanual('joystick03')"/>
+  	<area shape="circle" coords="120,120,20" a href="#" onmouseover="desplazamientomanual('joystick04')"/>
+	<area shape="circle" coords="75,120,20" a href="#" onmouseover="desplazamientomanual('joystick05')"/>
+	<area shape="circle" coords="30,120,20" a href="#" onmouseover="desplazamientomanual('joystick06')"/>
+	<area shape="circle" coords="30,75,20" a href="#" onmouseover="desplazamientomanual('joystick07')"/>
+	<area shape="circle" coords="75,75,20" a href="#" onmouseover="desplazamientomanual('joystick00')"/>
+  				
+	</map>
+
+	</td>
+
+	<td>
+
+	<table border=”1” bordercolor="#6E6E6E" cellspacing="2" bgcolor="white">
+
+	<tr>
+	<td>
+	<input type=image src="teclastartmanual.png" onclick="iniciarmanual();" width="43" height="43" class="myButton">
+	</td>
+	</tr>
+
+
+	<tr>
+	<td>
+	<input type=image src="teclacutmanual.png" onclick="todolasermanual();" width="43" height="43"  id="cut" class="myButton">
+	</td>
+	</tr>
+
+	<tr>
+	<td>
+	<input type=image src="teclastopmanual.png" onclick="apagarlasermanual();" width="43" height="43"  id="stop" class="myButton">
+	</td>
+	</tr>
+
+	</table>
+	
+
+	</td>
+
+	</tr>
+	</table>
+
+
+				</td>
+
+
+
+				<td align="center">
+				<input type=image src="botonemergencia.jpg" onclick="botonemergencia();" class="myButton"  width="80" height="80">
+				</a>
+				</td>
+
+				<td>
+					<table border=”1” bordercolor="#6E6E6E" cellspacing="2" bgcolor="white" align="left">
+					<tr>
+					<td width="43" height="43" align="center">
+					<input type=image src="teclaerase.png" onclick="borrar();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaflechaarri.png" onclick="arriba();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclastart.png" onclick="iniciarstart();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center" rowspan="3">
+					<input type=image src="teclaspaceuno.png" onclick="escribir('&nbsp');" class="myButton" width="43" height="141">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" align="center" height="43" >
+					<input type=image src="teclaflechaiz.png" onclick="izquierda();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaintro.png" onclick="intro();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaflechader.png" onclick="derecha();" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" align="center" height="43" >
+					<input type=image src="teclaesc.png" onclick="escape();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaflechaaba.png" onclick="abajo();" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclafile.png" onclick="introducirdatos();" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					</table>
+				</td>
+				
+
+
+
+				<td>
+					<table border=”1” bordercolor="#6E6E6E" cellspacing="2" bgcolor="white">
+					<tr>
+					<td width="43" height="43" align="center">
+					<input type=image src="teclaG0.png" onclick="escribir('G00');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaG1.png" onclick="escribir('G01');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaG2.png" onclick="escribir('G02');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaI.png" onclick="escribir('I');" width="43" height="43"  class="myButton">
+					</td>
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaX.png" onclick="escribir('X');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" height="43" align="center">
+					<input type=image src="teclaG3.png" onclick="escribir('G03');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaG20.png" onclick="escribir('G20');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaG28.png" onclick="escribir('G28');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaJ.png" onclick="escribir('J');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaY.png" onclick="escribir('Y');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" height="43" align="center">
+					<input type=image src="teclaG90.png" onclick="escribir('G90');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaG91.png" onclick="escribir('G91');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaR.png" onclick="escribir('R');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaF.png" onclick="escribir('F');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclaZ.png" onclick="escribir('Z');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					</table>
+				</td>
+				<td>
+					<table border=”1” bordercolor="#6E6E6E" cellspacing="2" bgcolor="white" align="right">
+					<tr>
+					<td width="43" height="43" align="center">
+					<input type=image src="tecla1.jpg" onclick="escribir('1');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla2.jpg" onclick="escribir('2');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla3.jpg" onclick="escribir('3');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclapunto.jpg" onclick="escribir('.');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" align="center" height="43" >
+					<input type=image src="tecla4.jpg" onclick="escribir('4');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla5.jpg" onclick="escribir('5');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla6.jpg" onclick="escribir('6');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="teclamenos.jpg" onclick="escribir('-');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					<tr>
+					<td width="43" align="center" height="43" >
+					<input type=image src="tecla7.jpg" onclick="escribir('7');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla8.jpg" onclick="escribir('8');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla9.jpg" onclick="escribir('9');" width="43" height="43"  class="myButton">
+					</td>
+					<td width="43" align="center">
+					<input type=image src="tecla0.jpg" onclick="escribir('0');" width="43" height="43"  class="myButton">
+					</td>
+					</tr>
+					</table>
+				</td>
+				
+					
+				
+				</tr> 
+				
+	</table>
+
+
+	
+
+
+	<p>
+	<img id="fondoayuda" width="1" height="1" src="fondoayuda1.png" onload="cargacompleta();">
+	</p>
+	<p>
+	<img id="boquillalaser" width="1" height="1" src="boquillalaser101.gif" onload="cargacompleta();">
+	</p>
+	
+
+
+</body>
+</html>
